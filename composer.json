@@ -1,0 +1,12 @@
+{
+    "name": "stepa/first-php-project",
+    "authors": [
+        {
+            "name": "Stepalom77",
+            "email": "stepalom22@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.4"
+    }
+}

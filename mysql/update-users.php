@@ -1,22 +1,15 @@
 <?php include "db.php";
+include "fetch-users.php";
 require __DIR__ . '/../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createUnsafeImmutable(__DIR__);
 //$dotenv->load();
 //echo $_ENV['HOST'];
-
-if(isset($_POST['submit'])){
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    if(!$username && !$password) {
-        echo "this field cannot be blank";
-    };
-//Create user
-$query = "INSERT INTO users(username, password) VALUES('$username', '$password')";
+//Update user
+/*$query = "INSERT INTO users(username, password) VALUES('$username', '$password')";
 $result = mysqli_query($connection, $query);
 if(!$result) {
-    die("Create FAILED");
-}
-};
+    die("Update FAILED");
+}*/
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +33,18 @@ if(!$result) {
                     <label for="password">Password</label>
                     <input type="password" name="password" class="form-control">
                 </div>
-                <input type="submit" name="submit" value="Submit" class="btn btn-primary">
+                <br>
+                <div class="form-group">
+                    <select name="id" id="">
+                        <?php 
+                        //fetching each id
+                        fetchAllUsers();
+                        ?> 
+                        
+                    </select>
+                </div>
+                <br>
+                <input type="submit" name="submit" value="Update" class="btn btn-primary">
             </form>
         </div>
     </div>
