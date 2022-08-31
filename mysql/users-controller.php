@@ -1,4 +1,18 @@
 <?php include "db.php";
+function getAllUsers() {
+    global $connection;
+    $selectAll = "SELECT * FROM users";
+    $selectResult = mysqli_query($connection, $selectAll);
+    if(!$selectResult) {
+        die("Get all FAILED");
+    };
+
+    while($row = mysqli_fetch_assoc($selectResult)) {
+        print_r($row);
+   
+    };
+};
+
 function fetchAllUsers() {
     global $connection;
     $selectAll = "SELECT * FROM users";
