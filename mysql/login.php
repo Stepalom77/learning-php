@@ -1,21 +1,12 @@
 <?php include "db.php";
+include "users-controller.php";
 require __DIR__ . '/../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createUnsafeImmutable(__DIR__);
 //$dotenv->load();
 //echo $_ENV['HOST'];
 
 if(isset($_POST['submit'])){
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    if(!$username && !$password) {
-        echo "this field cannot be blank";
-    };
-//Create user
-$query = "INSERT INTO users(username, password) VALUES('$username', '$password')";
-$result = mysqli_query($connection, $query);
-if(!$result) {
-    die("Create FAILED");
-}
+    createUser();
 };
 ?>
 

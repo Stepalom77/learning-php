@@ -5,10 +5,8 @@ $dotenv = Dotenv\Dotenv::createUnsafeImmutable(__DIR__);
 //$dotenv->load();
 //echo $_ENV['HOST'];
 if(isset($_POST['submit'])){
-    updateUser();
+    deleteUser();
 };
-
-
 ?>
 
 <!DOCTYPE html>
@@ -23,15 +21,15 @@ if(isset($_POST['submit'])){
 <body>
     <div class="container">
         <div class="col-xs-6">
-            <form action="update-users.php" method="post">
-                <div class="form-group">
+            <form action="delete-users.php" method="post">
+                <!--<div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" name="username" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" name="password" class="form-control">
-                </div>
+                </div>-->
                 <br>
                 <div class="form-group">
                     <select name="id" id="">
@@ -43,7 +41,7 @@ if(isset($_POST['submit'])){
                     </select>
                 </div>
                 <br>
-                <input type="submit" name="submit" value="Update" class="btn btn-primary">
+                <input type="submit" name="submit" value="Delete" class="btn btn-primary">
             </form>
         </div>
     </div>
