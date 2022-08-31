@@ -46,9 +46,19 @@ function createUser() {
     global $connection;
     $username = $_POST['username'];
     $password = $_POST['password'];
-    if(!$username && !$password) {
+    //cleans data in forms, protects against SQL injections
+    $username = mysqli_real_escape_string($connection, $username);
+    $password = mysqli_real_escape_string($connection, $password);
+    if(!$username) {
+        echo "this field cannot be blank";
+    } elseif(!$password) {
         echo "this field cannot be blank";
     };
+    //hashing password
+    $hashFormat = '$5$rounds=5000';
+    $salt = 'qfrthyju9ilopjh4mfdert';
+    $hash_and_salt = $hashFormat . $salt;
+    $password = crypt($password, $hash_and_salt);
 //Create user
 $query = "INSERT INTO users(username, password) VALUES('$username', '$password')";
 $result = mysqli_query($connection, $query);
